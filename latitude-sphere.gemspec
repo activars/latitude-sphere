@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "latitude-sphere"
   gem.require_paths = ["lib"]
   gem.version       = Latitude::Sphere::VERSION
+
+  gem.add_dependency "multi_json",        "~> 1.4.0" 
+  gem.add_dependency "google-api-client", "~> 0.5.0"
+  gem.add_development_dependency "rspec", "~> 2.6"
 end
