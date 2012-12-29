@@ -1,6 +1,8 @@
 # Latitude::Sphere
 
-TODO: Write a gem `description`
+WARNING: Do not install this gem, it's still working in progress
+
+[![Build Status](https://secure.travis-ci.org/activars/latitude-sphere.png)](http://travis-ci.org/activars/latitude-sphere)
 
 ## Installation
 
