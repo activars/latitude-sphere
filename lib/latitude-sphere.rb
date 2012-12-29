@@ -22,7 +22,7 @@ module LatitudeSphere
   # end
 
   def scope
-    @scope ||= 'all'
+    @scope ||= Scope.all_best
   end
 
   private

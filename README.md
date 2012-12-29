@@ -3,6 +3,7 @@
 WARNING: Do not install this gem, it's still working in progress
 
 [![Build Status](https://secure.travis-ci.org/activars/latitude-sphere.png)](http://travis-ci.org/activars/latitude-sphere)
+[![Dependency Status](https://gemnasium.com/activars/latitude-sphere.png)](https://gemnasium.com/activars/latitude-sphere)
 
 
 
