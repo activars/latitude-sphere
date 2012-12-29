@@ -1,8 +1,8 @@
 require 'latitude-sphere/version'
 
-require 'latitude-sphere/latitude_client'
-require 'latitude-sphere/scope'
+
 require 'latitude-sphere/client'
+require 'latitude-sphere/scope'
 
 
 module LatitudeSphere
@@ -22,7 +22,7 @@ module LatitudeSphere
   # end
 
   def scope
-    @scope ||= Scope.all_best
+    @scope ||= "#{Scope.all_best} #{Scope.current_best}" 
   end
 
   private
