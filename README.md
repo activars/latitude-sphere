@@ -1,6 +1,6 @@
 # Latitude::Sphere
 
-TODO: Write a gem description
+TODO: Write a gem `description`
 
 ## Installation
 
