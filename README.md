@@ -1,8 +1,10 @@
-# Latitude::Sphere
 
-WARNING: Do not install this gem, it's still working in progress
+# LatitudeSphere
 
 [![Build Status](https://secure.travis-ci.org/activars/latitude-sphere.png)](http://travis-ci.org/activars/latitude-sphere)
+
+# WARNING: Do not install this gem, it's still working in progress
+
 
 ## Installation
 
