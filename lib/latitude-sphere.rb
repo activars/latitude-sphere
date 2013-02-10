@@ -4,6 +4,7 @@ require 'latitude-sphere/version'
 require 'latitude-sphere/client'
 require 'latitude-sphere/scope'
 require 'latitude-sphere/server'
+require 'latitude-sphere/helpers/auth'
 
 
 module LatitudeSphere
