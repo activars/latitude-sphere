@@ -18,7 +18,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency "sinatra",           "~> 1.3.3"
   gem.add_dependency "multi_json",        "~> 1.5.0" 
   gem.add_dependency "google-api-client", "~> 0.6.0"
-  gem.add_dependency "thin",              "~> 1.5.0"
   gem.add_dependency "launchy",           "~> 2.1.2"
 
   gem.add_development_dependency "rspec", "~> 2.6"
