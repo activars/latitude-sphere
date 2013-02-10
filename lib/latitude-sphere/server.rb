@@ -14,7 +14,9 @@ module LatitudeSphere
     set :public_folder, "#{dir}/server/public"
     set :static,        true
 
-
+    before do
+      refersh_token 
+    end
 
     get '/' do
       # TODO list authorized account

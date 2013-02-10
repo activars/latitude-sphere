@@ -9,13 +9,19 @@ module Sinatra
 
     def api_client
       @client ||= (begin
-        client = Google::APIClient.new
+        client = Google::APIClient.new(:application_name => 'latitude export tool', :application_version => "0.0.1")
         client.authorization.client_id     = LatitudeSphere.client_id
         client.authorization.client_secret = LatitudeSphere.client_secret
         client.authorization.scope         = LatitudeSphere.scope
         client.authorization.redirect_uri  = LatitudeSphere.redirect_uri
         client
       end)
+    end
+
+    def refersh_token
+      if api_client.authorization.access_token && api_client.authorization.expired?
+        api_client.authorization.fetch_access_token!
+      end
     end
 
     def authorize_code(code)
@@ -27,7 +33,7 @@ module Sinatra
     end
 
     def authorized?
-      return api_client.authorization.refresh_token && api_client.authorization.access_token
+      return api_client.authorization.access_token
     end
 
     def authorize!
