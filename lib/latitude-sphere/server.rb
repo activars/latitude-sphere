@@ -1,27 +1,27 @@
 require 'sinatra/base'
 require 'bundler/setup'
 require 'erb'
-
-require 'latitude-sphere/helpers/auth'
+require 'latitude-sphere/helpers/user_auth'
 
 module LatitudeSphere
   class Server < Sinatra::Base
-    helpers ::Sinatra::LatitudeSphereAuth
+    register Sinatra::UserAuth
 
     dir = File.dirname(File.expand_path(__FILE__))
 
     set :views,         "#{dir}/server/views"
     set :public_folder, "#{dir}/server/public"
     set :static,        true
+    set :sessions,      true
 
     before do
-      refersh_token 
+      refersh_token
     end
 
     get '/' do
       # TODO list authorized account
       if authorized?
-        "authorized"
+        "you are authorized"
       else
         "not authorized yet"
       end
@@ -29,7 +29,6 @@ module LatitudeSphere
     end
 
     get '/account/login' do
-      # client = LatitudeSphere::Client.new
       if authorized?
         "you are already authorized"
       else

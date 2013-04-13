@@ -4,7 +4,7 @@ require 'latitude-sphere/version'
 require 'latitude-sphere/client'
 require 'latitude-sphere/scope'
 require 'latitude-sphere/server'
-require 'latitude-sphere/helpers/auth'
+require 'latitude-sphere/helpers/user_auth'
 
 
 module LatitudeSphere
@@ -24,7 +24,7 @@ module LatitudeSphere
   end
 
   def scope
-    @scope ||= "#{Scope.all_best} #{Scope.current_best} #{Scope.user_profile}" 
+    @scope ||= "#{Scope.all_best} #{Scope.current_best} #{Scope.user_profile}"
   end
 
   private
