@@ -24,7 +24,7 @@ module LatitudeSphere
   end
 
   def scope
-    @scope ||= "#{Scope.all_best} #{Scope.current_best} #{Scope.user_profile}"
+    @scope ||= "#{Scope.all_best} #{Scope.current_best} #{Scope.user_profile} #{Scope.user_email}"
   end
 
   private
