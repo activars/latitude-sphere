@@ -15,10 +15,10 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = LatitudeSphere::VERSION
 
-  gem.add_dependency "sinatra",           "~> 1.3.3"
-  gem.add_dependency "multi_json",        "~> 1.7.1"
+  gem.add_dependency "sinatra",           "~> 1.4.2"
+  gem.add_dependency "multi_json",        "~> 1.7.2"
   gem.add_dependency "google-api-client", "~> 0.6.0"
-  gem.add_dependency "launchy",           "~> 2.1.2"
+  gem.add_dependency "launchy",           "~> 2.2.0"
 
-  gem.add_development_dependency "rspec", "~> 2.6"
+  gem.add_development_dependency "rspec", "~> 2.13.0"
 end
