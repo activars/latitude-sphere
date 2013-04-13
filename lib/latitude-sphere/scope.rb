@@ -1,7 +1,7 @@
 module LatitudeSphere
   module Scope
     extend self
-    
+
     def all_best
       'https://www.googleapis.com/auth/latitude.all.best'
     end
@@ -20,6 +20,10 @@ module LatitudeSphere
 
     def user_profile
       'https://www.googleapis.com/auth/userinfo.profile'
+    end
+
+    def user_email
+      'https://www.googleapis.com/auth/userinfo.email'
     end
   end
 end

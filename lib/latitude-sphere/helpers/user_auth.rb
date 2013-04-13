@@ -17,6 +17,13 @@ module Sinatra
         @@client
       end
 
+      def user_info
+        oauth2 = current_user.discovered_api('oauth2')
+
+        result = current_user.execute(:api_method => oauth2.userinfo.get)
+        result.data
+      end
+
       def refersh_token
         if current_user.authorization.access_token && current_user.authorization.expired?
           current_user.authorization.fetch_access_token!
