@@ -21,7 +21,7 @@ module LatitudeSphere
     get '/' do
       # TODO list authorized account
       if authorized?
-        "you are authorized"
+        "you are authorized #{user_info['email']}"
       else
         "not authorized yet"
       end
