@@ -32,7 +32,12 @@ module LatitudeSphere
 
     get '/locations/export' do
       params  = request.env['rack.request.query_hash']
-      batches = batch_export(latitude.location.list, params['max_time'], params['min_time'])
+      batches = batch_export({
+        :api_method => latitude.location.list,
+        :max_time   => params['max_time'],
+        :min_time   => params['min_time'],
+        :email      => user_info['email']
+      })
       current_user.execute(batches)
     end
 
