@@ -2,10 +2,12 @@ require 'sinatra/base'
 require 'bundler/setup'
 require 'erb'
 require 'latitude-sphere/helpers/user_auth'
+require 'latitude-sphere/helpers/batch_exporter'
 
 module LatitudeSphere
   class Server < Sinatra::Base
     register Sinatra::UserAuth
+    register Sinatra::BatchExporter
 
     dir = File.dirname(File.expand_path(__FILE__))
 
@@ -26,6 +28,12 @@ module LatitudeSphere
         "not authorized yet"
       end
       # erb :index
+    end
+
+    get '/locations/export' do
+      params  = request.env['rack.request.query_hash']
+      batches = batch_export(latitude.location.list, params['max_time'], params['min_time'])
+      current_user.execute(batches)
     end
 
     get '/account/login' do

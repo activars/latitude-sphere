@@ -3,26 +3,34 @@ require 'date'
 
 module Sinatra
   module BatchExporter
-    module Helper
-      def batch_export(method, start_date, end_date, options = {})
+    module Helpers
+      extend self
+
+      def batch_export(api_method, max_time, min_time, options = {})
         batch = Google::APIClient::BatchRequest.new
 
-        start_date = Date.parse(start_date)
-        end_date   = Date.parse(end_date)
+        max_date = Date.parse(max_time)
+        min_date = Date.parse(min_time)
 
-        start_date.upto(end_date) do |date|
+        min_date.upto(max_date) do |date|
           batch_options = {
-            :api_method  => method,
-            :body_object => { 'longUrl' => 'http://example.com/foo' }
+            :api_method  => api_method,
+            :body_object => {
+              'max-results' => 1000,
+              'granularity' => 'best',
+              'min-time' => date.to_time.to_i,
+              'max-time' => date.next.to_time.to_i
+            }
           }
 
-          batch.add(batch_options) { |result| export_to_disk(date, response) }
+          batch.add(batch_options) { |result| export_to_disk(date, result.response) }
         end
         batch
       end
 
       def export_to_disk(date, response)
-        # TODO: write result to disk
+        # TODO: write response to disk
+        puts date, response.body
       end
     end
 

@@ -17,6 +17,10 @@ module Sinatra
         @@client
       end
 
+      def latitude
+        current_user.discovered_api('latitude')
+      end
+
       def user_info
         oauth2 = current_user.discovered_api('oauth2')
 
