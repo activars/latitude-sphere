@@ -14,13 +14,14 @@ module Sinatra
         min_date = Date.parse(options[:min_time])
 
         min_date.upto(max_date) do |date|
+
           batch_options = {
             :api_method  => options[:api_method],
-            :body_object => {
+            :parameters  => {
               'max-results' => 1000,
               'granularity' => 'best',
-              'min-time' => date.to_time.to_i,
-              'max-time' => date.next.to_time.to_i
+              'min-time' => convert_to_time(date),
+              'max-time' => convert_to_time(date.next)
             }
           }
 
@@ -38,15 +39,23 @@ module Sinatra
         year_folder_name  = File.join(root_folder_name, date.year.to_s)
         create_dir year_folder_name
 
+        # write an account information
+        account_file_path = File.join(root_folder_name, 'account')
+        write(account_file_path, email)
+
         month_folder_name = File.join(year_folder_name, date.mon.to_s)
         create_dir month_folder_name
 
+        # write json to disk
         file_path         = File.join(month_folder_name, date.to_s)
-
         write(file_path, MultiJson.dump(data, :pretty => true))
       end
 
       private
+
+      def convert_to_time(date)
+        date.to_time.to_i * 1000
+      end
 
       def create_dir(path)
         Dir.mkdir(path) unless Dir.exist?(path)

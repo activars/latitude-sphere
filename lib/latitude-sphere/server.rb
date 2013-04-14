@@ -36,8 +36,10 @@ module LatitudeSphere
         :api_method => latitude.location.list,
         :max_time   => params['max_time'],
         :min_time   => params['min_time'],
-        :email      => user_info['email']
+        :email      => user_info['email'],
+        :client     => current_user
       })
+
       current_user.execute(batches)
     end
 
